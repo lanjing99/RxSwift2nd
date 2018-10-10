@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Combinestagram/PhotoWriter.swift"
+            timestampString = "557208422.99189"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "save(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Combinestagram/PhotoWriter.swift"
+            timestampString = "557208424.967618"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "save(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Swift.String&gt;) -&gt; RxSwift.Disposable in static Combinestagram.PhotoWriter.save(__ObjC.UIImage) -&gt; RxSwift.Observable&lt;Swift.String&gt;"
+                  moduleName = "Combinestagram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanjing/Routines/work/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/iOS/RxSwift_Reactive_Programming_with_Swift_v2.0/04-observables-in-practice/final/Combinestagram/PhotoWriter.swift"
+                  timestampString = "557208426.7306091"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #2 (Swift.Bool, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 (RxSwift.AnyObserver&lt;Swift.String&gt;) -&gt; RxSwift.Disposable in static Combinestagram.PhotoWriter.save(__ObjC.UIImage) -&gt; RxSwift.Observable&lt;Swift.String&gt;"
+                  moduleName = "Combinestagram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/lanjing/Routines/work/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/iOS/RxSwift_Reactive_Programming_with_Swift_v2.0/04-observables-in-practice/final/Combinestagram/PhotoWriter.swift"
+                  timestampString = "557208426.732446"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "27">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
