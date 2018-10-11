@@ -103,6 +103,10 @@ class EONET {
     static func events(forLast days: Int = 360) -> Observable<[EOEvent]>{
         let openEvents = events(forLast: days, closed: false)
         let closedEvents = events(forLast: days, closed: true)
-        return openEvents.concat(closedEvents)
+//        return openEvents.concat(closedEvents)          //串行，当第一个Observable完成时，加载第二个Observable， 用Whistle验证一下
+        //并发的两个请求，哪个请求先到就先处理
+        return Observable.of(openEvents, closedEvents).merge().reduce([], accumulator: { (running, new) -> [EOEvent] in
+            return running + new
+        })
     }
 }
