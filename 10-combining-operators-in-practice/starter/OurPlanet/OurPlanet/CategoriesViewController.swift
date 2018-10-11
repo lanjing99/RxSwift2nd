@@ -38,22 +38,40 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
 
   func startDownload() {
+        //获取category数据
+//        let eoCategories = EONET.categories
+//        eoCategories
+//            .bind(to: categories)
+//            .disposed(by: disposeBage)
+//
+//        categories.asObservable().subscribe(onNext: { [weak self] _ in
+//            DispatchQueue.main.async {
+//                self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
+//            }
+//            }, onError: { error in
+//                print(error)
+//        }, onCompleted: {
+//            print("completed!")
+//        }) {
+//            print("Disposed!")
+//        }.disposed(by: disposeBage)
+    
         let eoCategories = EONET.categories
+        let downloadEvents = EONET.events(forLast: 360)
+        //将两个Observable结合为1个，两个接口的数据结合在一起，分离逻辑和UI，后面进一步体会吧。
+        //不管哪个请求先返回，处理逻辑其实是一样的。
+        let updatedCategories = Observable.combineLatest(eoCategories, downloadEvents) { (categories, events) -> [EOCategory] in
+            return categories.map{ category -> EOCategory in
+                var cat = category
+                cat.events = events.filter{ $0.categories.contains(category.id)}
+                return cat
+            }
+        }
+    
         eoCategories
+            .concat(updatedCategories)  //为什么这里需要concat呢，先更新一次category？再更新数据？ 用whistle测试一下？
             .bind(to: categories)
             .disposed(by: disposeBage)
-    
-        categories.asObservable().subscribe(onNext: { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
-            }
-            }, onError: { error in
-                print(error)
-        }, onCompleted: {
-            print("completed!")
-        }) {
-            print("Disposed!")
-        }.disposed(by: disposeBage)
   }
   
   // MARK: UITableViewDataSource
@@ -64,8 +82,9 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell")!
     let category = categories.value[indexPath.row]
-    cell.textLabel?.text = category.name
-    cell.detailTextLabel?.text = category.description
+    cell.textLabel?.text = "\(category.name) (\(category.events.count))"
+//    cell.detailTextLabel?.text = category.description
+    cell.accessoryType = (category.events.count > 0) ? .disclosureIndicator : .none
     return cell
   }
   

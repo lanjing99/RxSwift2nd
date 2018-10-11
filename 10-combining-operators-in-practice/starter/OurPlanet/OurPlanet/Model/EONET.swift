@@ -53,7 +53,7 @@ class EONET {
                 throw EOError.invalidURL(endpoint)
             }
             
-            components.queryItems = try query.compactMap({ (key, value) in
+            components.queryItems = try query.compactMap({ (key, value) -> URLQueryItem in
                 guard let v = value as? CustomStringConvertible else{
                     throw EOError.invalidParameter(key, value)
                 }
@@ -65,7 +65,7 @@ class EONET {
             }
             
             let request = URLRequest(url: finalURL)
-            return URLSession.shared.rx.response(request: request)   //网络请求失败，这次会出现什么情况？没有响应。
+            return URLSession.shared.rx.response(request: request)   //网络请求失败，这次会出现什么情况,Observable会发出错误， 异常和Observable的错误是不同的
                 .map({ (response, data) -> [String: Any] in
                     guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: []),
                     let result = jsonObject as? [String: Any] else{
@@ -84,7 +84,25 @@ class EONET {
             let categories = data["categories"] as? [[String: Any]] ?? []
             return categories.compactMap(EOCategory.init).sorted { $0.name < $1.name }
         }
-//        .catchErrorJustReturn([])
-        .share(replay: 1, scope: .forever)      //什么时候重新发起请求？
+        .catchErrorJustReturn([])
+        .share(replay: 1, scope: .forever)      //什么时候重新发起请求？ 因为静态变量的存在，这里应该只会发出一次网络请求
     }()
+    
+    
+    fileprivate static func events(forLast days: Int, closed: Bool) -> Observable<[EOEvent]>{
+        return request(endpoint: eventsEndpoint, query: ["days": NSNumber(value: days), "status": (closed ? "closed" : "open")])
+            .map{ json in
+                guard let raw = json["events"] as? [[String: Any]] else{
+                    throw EOError.invalidJSON(eventsEndpoint)
+                }
+                return raw.compactMap(EOEvent.init(json:))
+            }
+            .catchErrorJustReturn([])
+    }
+    
+    static func events(forLast days: Int = 360) -> Observable<[EOEvent]>{
+        let openEvents = events(forLast: days, closed: false)
+        let closedEvents = events(forLast: days, closed: true)
+        return openEvents.concat(closedEvents)
+    }
 }
