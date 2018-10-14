@@ -90,6 +90,7 @@ class EONET {
     
     
     fileprivate static func events(forLast days: Int, closed: Bool) -> Observable<[EOEvent]>{
+        print("evnet \(eventsEndpoint)")
         return request(endpoint: eventsEndpoint, query: ["days": NSNumber(value: days), "status": (closed ? "closed" : "open")])
             .map{ json in
                 guard let raw = json["events"] as? [[String: Any]] else{

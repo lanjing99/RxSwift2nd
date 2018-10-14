@@ -6,79 +6,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OurPlanet/Model/EONET.swift"
-            timestampString = "560845524.923907"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "request(endpoint:query:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "OurPlanet/CategoriesViewController.swift"
-            timestampString = "560845524.924397"
+            timestampString = "561252911.560367"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "startDownload()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OurPlanet/Model/EONET.swift"
-            timestampString = "560845524.9244699"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "categories"
-            landmarkType = "24">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Array&lt;OurPlanet.EOCategory&gt; in closure #1 () -&gt; RxSwift.Observable&lt;Swift.Array&lt;OurPlanet.EOCategory&gt;&gt; in variable initialization expression of static OurPlanet.EONET.categories : RxSwift.Observable&lt;Swift.Array&lt;OurPlanet.EOCategory&gt;&gt;"
+                  symbolName = "closure #5 (Swift.Array&lt;OurPlanet.EOCategory&gt;, Swift.Array&lt;OurPlanet.EOEvent&gt;) -&gt; Swift.Array&lt;OurPlanet.EOCategory&gt; in OurPlanet.CategoriesViewController.startDownload() -&gt; ()"
                   moduleName = "OurPlanet"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanjing/Routines/work/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/iOS/RxSwift_Reactive_Programming_with_Swift_v2.0/10-combining-operators-in-practice/starter/OurPlanet/OurPlanet/Model/EONET.swift"
-                  timestampString = "560845525.0936559"
+                  urlString = "file:///Users/lanjing/work/github/RxSwift2nd/10-combining-operators-in-practice/starter/OurPlanet/OurPlanet/CategoriesViewController.swift"
+                  timestampString = "561249227.936072"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "536">
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "667">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (OurPlanet.EOCategory, OurPlanet.EOCategory) -&gt; Swift.Bool in closure #1 (Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; Swift.Array&lt;OurPlanet.EOCategory&gt; in closure #1 () -&gt; RxSwift.Observable&lt;Swift.Array&lt;OurPlanet.EOCategory&gt;&gt; in variable initialization expression of static OurPlanet.EONET.categories : RxSwift.Observable&lt;Swift.Array&lt;OurPlanet.EOCategory&gt;&gt;"
+                  symbolName = "closure #1 (OurPlanet.EOCategory) -&gt; OurPlanet.EOCategory in closure #5 (Swift.Array&lt;OurPlanet.EOCategory&gt;, Swift.Array&lt;OurPlanet.EOEvent&gt;) -&gt; Swift.Array&lt;OurPlanet.EOCategory&gt; in OurPlanet.CategoriesViewController.startDownload() -&gt; ()"
                   moduleName = "OurPlanet"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lanjing/Routines/work/%E5%AD%A6%E4%B9%A0%E6%9D%90%E6%96%99/iOS/RxSwift_Reactive_Programming_with_Swift_v2.0/10-combining-operators-in-practice/starter/OurPlanet/OurPlanet/Model/EONET.swift"
-                  timestampString = "560845525.0956351"
+                  urlString = "file:///Users/lanjing/work/github/RxSwift2nd/10-combining-operators-in-practice/starter/OurPlanet/OurPlanet/CategoriesViewController.swift"
+                  timestampString = "561249227.940721"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "32">
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -86,16 +54,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OurPlanet/Model/EONET.swift"
-            timestampString = "560845524.9247431"
+            filePath = "OurPlanet/EventsViewController.swift"
+            timestampString = "561252911.560443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "request(endpoint:query:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OurPlanet/EventsViewController.swift"
+            timestampString = "561252911.5608"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,45 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "OurPlanet/Model/EONET.swift"
-            timestampString = "560845524.92498"
+            filePath = "OurPlanet/EventsViewController.swift"
+            timestampString = "561252911.5610451"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "request(endpoint:query:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "OurPlanet/Model/EONET.swift"
-            timestampString = "560845524.9252059"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "request(endpoint:query:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/RxCocoa/RxCocoa/Foundation/URLSession+Rx.swift"
-            timestampString = "560845524.925619"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "response(request:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

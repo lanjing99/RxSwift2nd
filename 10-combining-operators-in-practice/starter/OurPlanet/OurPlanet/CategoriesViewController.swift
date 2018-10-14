@@ -38,38 +38,39 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
 
   func startDownload() {
-        //获取category数据
+//        //获取category数据
 //        let eoCategories = EONET.categories
 //        eoCategories
 //            .bind(to: categories)
 //            .disposed(by: disposeBage)
 //
-//        categories.asObservable().subscribe(onNext: { [weak self] _ in
-//            DispatchQueue.main.async {
-//                self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
-//            }
-//            }, onError: { error in
-//                print(error)
-//        }, onCompleted: {
-//            print("completed!")
-//        }) {
-//            print("Disposed!")
-//        }.disposed(by: disposeBage)
+        categories.asObservable().subscribe(onNext: { [weak self] _ in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
+            }
+            }, onError: { error in
+                print(error)
+        }, onCompleted: {
+            print("completed!")
+        }) {
+            print("Disposed!")
+        }.disposed(by: disposeBage)
     
         let eoCategories = EONET.categories
         let downloadEvents = EONET.events(forLast: 360)
         //将两个Observable结合为1个，两个接口的数据结合在一起，分离逻辑和UI，后面进一步体会吧。
         //不管哪个请求先返回，处理逻辑其实是一样的。
         let updatedCategories = Observable.combineLatest(eoCategories, downloadEvents) { (categories, events) -> [EOCategory] in
+            print("categorys count \(categories.count), events count \(events.count)")
             return categories.map{ category -> EOCategory in
                 var cat = category
                 cat.events = events.filter{ $0.categories.contains(category.id)}
                 return cat
             }
         }
-    
+
         eoCategories
-            .concat(updatedCategories)  //为什么这里需要concat呢，先更新一次category？再更新数据？ 用whistle测试一下？
+            .concat(updatedCategories)  //为什么这里需要concat呢，先更新一次category？再更新数据？ 用whistle测试一下？保证分类的请求完成后能看到分类的结果
             .bind(to: categories)
             .disposed(by: disposeBage)
   }
@@ -87,6 +88,19 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     cell.accessoryType = (category.events.count > 0) ? .disclosureIndicator : .none
     return cell
   }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let category = categories.value[indexPath.row]
+        guard category.events.isEmpty == false else {
+            return
+        }
+        
+        let eventsController = storyboard!.instantiateViewController(withIdentifier: "events") as! EventsViewController
+        eventsController.title = category.name
+        eventsController.events.value = category.events
+        navigationController?.pushViewController(eventsController, animated: true)
+    }
   
 }
 
