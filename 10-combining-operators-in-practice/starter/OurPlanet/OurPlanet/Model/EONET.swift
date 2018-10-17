@@ -89,9 +89,9 @@ class EONET {
     }()
     
     
-    fileprivate static func events(forLast days: Int, closed: Bool) -> Observable<[EOEvent]>{
-        print("evnet \(eventsEndpoint)")
-        return request(endpoint: eventsEndpoint, query: ["days": NSNumber(value: days), "status": (closed ? "closed" : "open")])
+    fileprivate static func events(forLast days: Int, closed: Bool, endpoint: String) -> Observable<[EOEvent]>{
+        print("evnet url: \(endpoint)")
+        return request(endpoint: endpoint, query: ["days": NSNumber(value: days), "status": (closed ? "closed" : "open")])
             .map{ json in
                 guard let raw = json["events"] as? [[String: Any]] else{
                     throw EOError.invalidJSON(eventsEndpoint)
@@ -101,9 +101,9 @@ class EONET {
             .catchErrorJustReturn([])
     }
     
-    static func events(forLast days: Int = 360) -> Observable<[EOEvent]>{
-        let openEvents = events(forLast: days, closed: false)
-        let closedEvents = events(forLast: days, closed: true)
+    static func events(forLast days: Int = 360, category: EOCategory) -> Observable<[EOEvent]>{
+        let openEvents = events(forLast: days, closed: false, endpoint: category.endpoint)
+        let closedEvents = events(forLast: days, closed: true, endpoint: category.endpoint)
 //        return openEvents.concat(closedEvents)          //串行，当第一个Observable完成时，加载第二个Observable， 用Whistle验证一下
         //并发的两个请求，哪个请求先到就先处理
         return Observable.of(openEvents, closedEvents).merge().reduce([], accumulator: { (running, new) -> [EOEvent] in

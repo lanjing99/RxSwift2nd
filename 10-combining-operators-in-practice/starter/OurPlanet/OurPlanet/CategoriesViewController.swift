@@ -38,36 +38,63 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
 
   func startDownload() {
-//        //获取category数据
+    
+    categories.asObservable().subscribe(onNext: { [weak self] _ in
+        DispatchQueue.main.async {
+            self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
+        }
+        }, onError: { error in
+            print(error)
+    }, onCompleted: {
+        print("completed!")
+    }) {
+        print("Disposed!")
+        }.disposed(by: disposeBage)
+    
+//        //1 只获取获取category数据
 //        let eoCategories = EONET.categories
 //        eoCategories
 //            .bind(to: categories)
 //            .disposed(by: disposeBage)
 //
-        categories.asObservable().subscribe(onNext: { [weak self] _ in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()                //网络出错，也是执行onNext的代码
-            }
-            }, onError: { error in
-                print(error)
-        }, onCompleted: {
-            print("completed!")
-        }) {
-            print("Disposed!")
-        }.disposed(by: disposeBage)
+    
+
+//        //获取分类和所有的事件
+//        let eoCategories = EONET.categories
+//        let downloadEvents = EONET.events(forLast: 360)
+//        //将两个Observable结合为1个，两个接口的数据结合在一起，分离逻辑和UI，后面进一步体会吧。
+//        //不管哪个请求先返回，处理逻辑其实是一样的。
+//        let updatedCategories = Observable.combineLatest(eoCategories, downloadEvents) { (categories, events) -> [EOCategory] in
+//            print("categorys count \(categories.count), events count \(events.count)")
+//            return categories.map{ category -> EOCategory in
+//                var cat = category
+//                cat.events = events.filter{ $0.categories.contains(category.id)}
+//                return cat
+//            }
+//        }
     
         let eoCategories = EONET.categories
-        let downloadEvents = EONET.events(forLast: 360)
-        //将两个Observable结合为1个，两个接口的数据结合在一起，分离逻辑和UI，后面进一步体会吧。
-        //不管哪个请求先返回，处理逻辑其实是一样的。
-        let updatedCategories = Observable.combineLatest(eoCategories, downloadEvents) { (categories, events) -> [EOCategory] in
-            print("categorys count \(categories.count), events count \(events.count)")
-            return categories.map{ category -> EOCategory in
+    let downloadedEvents = eoCategories.flatMap { categories -> Observable<Observable<[EOEvent]>> in
+        return Observable.from(categories.map { category in
+            return EONET.events(forLast: 360, category: category)
+        })
+    }.merge(maxConcurrent: 2)
+    
+    let updatedCategories = eoCategories.flatMap { categories  in
+        return downloadedEvents.scan(categories, accumulator: { updated, events in
+            return updated.map { category in
+                
+                let eventsForCategory = EONET.filteredEvents(events: events, forCategory: category)
+                guard eventsForCategory.isEmpty == false else{
+                    return category
+                }
                 var cat = category
-                cat.events = events.filter{ $0.categories.contains(category.id)}
+                cat.events = cat.events + eventsForCategory
                 return cat
+                
             }
-        }
+        })
+    }
 
         eoCategories
             .concat(updatedCategories)  //为什么这里需要concat呢，先更新一次category？再更新数据？ 用whistle测试一下？保证分类的请求完成后能看到分类的结果
