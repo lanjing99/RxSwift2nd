@@ -74,16 +74,19 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
 //        }
     
         let eoCategories = EONET.categories
-    let downloadedEvents = eoCategories.flatMap { categories -> Observable<Observable<[EOEvent]>> in
-        return Observable.from(categories.map { category in
-            return EONET.events(forLast: 360, category: category)
-        })
-    }.merge(maxConcurrent: 2)
+        let downloadedEvents = eoCategories.flatMap { categories -> Observable<Observable<[EOEvent]>> in
+                let result =  categories.map { category  in
+                    EONET.events(forLast: 360, category: category)
+                }
+                return  Observable.from(result)
+            }.merge(maxConcurrent: 2)
     
-    let updatedCategories = eoCategories.flatMap { categories  in
-        return downloadedEvents.scan(categories, accumulator: { updated, events in
+    
+    
+    let updatedCategories = eoCategories.flatMap { categories  -> Observable<[EOCategory]> in
+        let result = downloadedEvents.scan(categories, accumulator: { updated, events in
             return updated.map { category in
-                
+
                 let eventsForCategory = EONET.filteredEvents(events: events, forCategory: category)
                 guard eventsForCategory.isEmpty == false else{
                     return category
@@ -91,9 +94,10 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
                 var cat = category
                 cat.events = cat.events + eventsForCategory
                 return cat
-                
+
             }
         })
+        return result
     }
 
         eoCategories
