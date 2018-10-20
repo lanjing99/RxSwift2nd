@@ -31,10 +31,57 @@ class ViewController: UIViewController {
   @IBOutlet weak var humidityLabel: UILabel!
   @IBOutlet weak var iconLabel: UILabel!
   @IBOutlet weak var cityNameLabel: UILabel!
+    
+ let bag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    
+    let search = searchCityName.rx.controlEvent(.editingDidEndOnExit).asObservable()
+        .map{ self.searchCityName.text }
+        .filter{ ($0 ?? "").isEmpty == false}
+        .flatMap { cityName -> Observable<ApiController.Weather> in
+            return ApiController.shared.currentWeather(city: cityName!)
+        }
+        .asDriver(onErrorJustReturn: ApiController.Weather.empty)
+//    .subscribe(onNext: { weather in
+//        self.tempLabel.text = "\(weather.temperature) C"
+//        self.iconLabel.text = weather.icon
+//        self.humidityLabel.text = "\(weather.humidity)%"
+//        self.cityNameLabel.text = weather.cityName
+//    })
+//    .disposed(by: bag)
+    
+//    search.map {
+//        $0.icon
+//    }.bind(to: iconLabel.rx.text)
+//    .disposed(by: bag)
+//
+//    search.map {
+//        "\($0.humidity)"
+//    }.bind(to: humidityLabel.rx.text)
+//        .disposed(by: bag)
+//
+//    search.map {
+//        $0.cityName
+//    }.bind(to: cityNameLabel.rx.text)
+//        .disposed(by: bag)
+    
+    search.map {
+        $0.icon
+        }.drive(iconLabel.rx.text)
+        .disposed(by: bag)
+    
+    search.map {
+        "\($0.humidity)"
+        }.drive(humidityLabel.rx.text)
+        .disposed(by: bag)
+    
+    search.map {
+        $0.cityName
+        }.drive(cityNameLabel.rx.text)
+        .disposed(by: bag)
 
     style()
 
