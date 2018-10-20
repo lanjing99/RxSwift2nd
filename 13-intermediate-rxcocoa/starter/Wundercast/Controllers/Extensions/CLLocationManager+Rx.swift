@@ -25,3 +25,36 @@ import CoreLocation
 import RxSwift
 import RxCocoa
 
+extension CLLocationManager: HasDelegate {
+    
+}
+
+
+extension Reactive where Base: CLLocationManager{
+    public var delegate: DelegateProxy<CLLocationManager, CLLocationManagerDelegate>{
+        return RxCLLocationManagerDelegateProxy.proxy(for: base)
+    }
+    
+    var didUpdateLocations: Observable<[CLLocation]>{
+        return delegate.methodInvoked(#selector(CLLocationManagerDelegate.locationManager(_:didUpdateLocations:)))
+            .map{ parameters in
+                return parameters[1] as! [CLLocation]
+            }
+    }
+}
+
+class RxCLLocationManagerDelegateProxy: DelegateProxy<CLLocationManager, CLLocationManagerDelegate>, DelegateProxyType, CLLocationManagerDelegate{
+    static func registerKnownImplementations() {
+        self.register { parent -> RxCLLocationManagerDelegateProxy in
+            RxCLLocationManagerDelegateProxy(locationManager: parent)
+        }
+    }
+    
+    
+    public weak private(set) var locationManager: CLLocationManager?
+    public init(locationManager: ParentObject){
+        self.locationManager = locationManager
+        super.init(parentObject: locationManager, delegateProxy: RxCLLocationManagerDelegateProxy.self)
+    }
+    
+}
