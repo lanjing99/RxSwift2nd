@@ -170,7 +170,6 @@
 				CB4D693A1DE9A7D100DC0488 /* Frameworks */,
 				CB4D693B1DE9A7D100DC0488 /* Resources */,
 				BD927D51EC70596AA6D375E6 /* [CP] Embed Pods Frameworks */,
-				164C3044B1E58AFA65CEA5A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,21 +232,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		164C3044B1E58AFA65CEA5A4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wundercast/Pods-Wundercast-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BD927D51EC70596AA6D375E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
