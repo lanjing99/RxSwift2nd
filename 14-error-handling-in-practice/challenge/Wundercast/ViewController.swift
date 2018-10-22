@@ -97,7 +97,7 @@ class ViewController: UIViewController {
         } else if let casted = error as? ApiController.ApiError, casted == .invalidKey {
           return ApiController.shared.apiKey.filter {$0 != ""}.map { _ in return 1 }
         } else if (error as NSError).code == -1009 {
-          return RxReachability.shared.status.filter { $0 == .online }.map { _  in return 1 }
+          return RxReachability.shared.status.filter { $0 == .online }.map { _  in return 1 }  //这些都是异步时间触发
         }
         print("== retrying after \(attempt + 1) seconds ==")
         return Observable<Int>.timer(Double(attempt + 1), scheduler: MainScheduler.instance).take(1)
