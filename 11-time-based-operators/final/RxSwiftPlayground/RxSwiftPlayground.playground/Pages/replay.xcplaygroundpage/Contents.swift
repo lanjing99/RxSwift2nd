@@ -8,9 +8,20 @@ let maxElements = 5
 let replayedElements = 1
 let replayDelay: TimeInterval = 3
 
+//Observable<Int>.interval(1, scheduler: MainScheduler.instance).subscribe{
+//    print($0)
+//}
+//Observable<Int>.timer(3, scheduler: MainScheduler.instance).subscribe{
+//    print($0)
+//}
+//
+//Observable<Int>.timer(3, period: 2, scheduler: MainScheduler.instance).subscribe{
+//    print($0)
+//}
 
 let sourceObservable = Observable<Int>
   .interval(RxTimeInterval(1.0 / Double(elementsPerSecond)), scheduler: MainScheduler.instance)
+//    .replayAll()
   .replay(replayedElements)
 
 let sourceTimeline = TimelineView<Int>.make()

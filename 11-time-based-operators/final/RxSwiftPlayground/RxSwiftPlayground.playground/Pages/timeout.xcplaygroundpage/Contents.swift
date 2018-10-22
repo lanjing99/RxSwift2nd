@@ -17,7 +17,8 @@ let stack = UIStackView.makeVertical([
 let _ = button
   .rx.tap
   .map { _ in "•" }
-  .timeout(5, other: Observable.just("X"), scheduler: MainScheduler.instance)
+    .timeout(3, scheduler: MainScheduler.instance)
+//  .timeout(5, other: Observable.just("X"), scheduler: MainScheduler.instance)
   .subscribe(tapsTimeline)
 
 let hostView = setupHostView()

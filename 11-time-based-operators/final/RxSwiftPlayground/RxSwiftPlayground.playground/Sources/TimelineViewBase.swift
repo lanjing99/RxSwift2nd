@@ -107,7 +107,7 @@ open class TimelineViewBase : UIView {
   }
   
   func detachDisplayLink() {
-    displayLink?.remove(from: RunLoop.main, forMode: .commonModes)
+    displayLink?.remove(from: RunLoop.main, forMode: RunLoop.Mode.common)
     displayLink = nil
   }
   
@@ -118,7 +118,7 @@ open class TimelineViewBase : UIView {
       detachDisplayLink()
     } else {
       displayLink = CADisplayLink(target: self, selector: #selector(update(_:)))
-      displayLink?.add(to: RunLoop.main, forMode: .commonModes)
+      displayLink?.add(to: RunLoop.main, forMode: RunLoop.Mode.common)
     }
   }
   

@@ -22,7 +22,10 @@ _ = sourceObservable.subscribe(sourceTimeline)
 
 sourceObservable
   .buffer(timeSpan: bufferTimeSpan, count: bufferMaxCount, scheduler: MainScheduler.instance)
-  .map { $0.count }
+  .map {
+    print($0)
+    return $0.count
+    }
   .subscribe(bufferedTimeline)
 
 let hostView = setupHostView()
