@@ -100,7 +100,6 @@
 				CBFDE2031E4E699B00F207F0 /* Sources */,
 				CBFDE2041E4E699B00F207F0 /* Frameworks */,
 				CBFDE2051E4E699B00F207F0 /* CopyFiles */,
-				77C191BA46C3F12DD8831640 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,34 +145,22 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		77C191BA46C3F12DD8831640 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Schedulers/Pods-Schedulers-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		DDC63D23ACB91760A551E50C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Schedulers-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -289,7 +276,7 @@
 					"-framework",
 					"\"RxSwift\"",
 					"-rpath",
-					$DT_TOOLCHAIN_DIR/usr/lib/swift/macosx/,
+					"$DT_TOOLCHAIN_DIR/usr/lib/swift/macosx/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -306,7 +293,7 @@
 					"-framework",
 					"\"RxSwift\"",
 					"-rpath",
-					$DT_TOOLCHAIN_DIR/usr/lib/swift/macosx/,
+					"$DT_TOOLCHAIN_DIR/usr/lib/swift/macosx/",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

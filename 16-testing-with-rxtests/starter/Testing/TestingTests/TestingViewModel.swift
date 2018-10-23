@@ -33,6 +33,45 @@ class TestingViewModel : XCTestCase {
 
   override func setUp() {
     super.setUp()
-
+    viewModel = ViewModel()
+    scheduler = ConcurrentDispatchQueueScheduler(qos: .default)
   }
+    
+    func testColorIsRedWhenHexStringIsFF0000_async(){
+        let disposeBag = DisposeBag()
+        let expect = expectation(description: #function)
+        let expectedColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 1.0)
+        var result: UIColor!
+        
+        viewModel.color.asObservable().skip(1).do(onNext: { color in
+            print(color)
+        }).subscribe(onNext: { color in
+            result = color
+            expect.fulfill()
+        }).disposed(by: disposeBag)
+        
+        viewModel.hexString.value = "#ff0000"
+        
+        waitForExpectations(timeout: 1.0) { error in
+            guard error == nil else{
+                XCTFail(error!.localizedDescription)
+                return
+            }
+            XCTAssertEqual(expectedColor, result)
+        }
+    }
+    
+    func testColorIsRedWhenHexStringIsFF0000(){
+        let observable = viewModel.color.asObservable().subscribeOn(scheduler)
+        viewModel.hexString.value = "#ff0000"
+        
+        do{
+            guard let result = try observable.toBlocking(timeout: 1.0).first() else{
+                return
+            }
+            XCTAssertEqual(result, .red)
+        }catch{
+            print(error)
+        }
+    }
 }

@@ -1,0 +1,35 @@
+PODS:
+  - Hue (3.0.1)
+  - RxBlocking (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxCocoa (4.3.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.3.1)
+  - RxTest (4.3.1):
+    - RxSwift (~> 4.0)
+
+DEPENDENCIES:
+  - Hue (~> 3.0)
+  - RxBlocking (~> 4.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - RxTest (~> 4.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Hue
+    - RxBlocking
+    - RxCocoa
+    - RxSwift
+    - RxTest
+
+SPEC CHECKSUMS:
+  Hue: 93e852fa6211ab35922ad8c293f51c43d6c79eb2
+  RxBlocking: 64c051285261ca2339481e91b5f70eb06b03660a
+  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxTest: ea97a208826906f3904c0debdd09575ebcbfe216
+
+PODFILE CHECKSUM: 05df8d774aebcfaa2f89e9e2f72cb6fc63955edd
+
+COCOAPODS: 1.5.3

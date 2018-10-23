@@ -164,7 +164,6 @@
 				D20AC0F11F98E56200C46E7E /* Frameworks */,
 				D20AC0F21F98E56200C46E7E /* Resources */,
 				C20190BBA989C2CFAD9CC564 /* [CP] Embed Pods Frameworks */,
-				B4FAF564B9AA1F5ED10CCD7B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,7 +183,6 @@
 				D20AC1051F98E56200C46E7E /* Frameworks */,
 				D20AC1061F98E56200C46E7E /* Resources */,
 				CEC68C50FB31A3668BC115DB /* [CP] Embed Pods Frameworks */,
-				1FD5A4523A8B13476EB393CD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -276,21 +274,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1FD5A4523A8B13476EB393CD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TestingTests/Pods-TestingTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		511E12E33F4F855E7849F2E3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,21 +290,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4FAF564B9AA1F5ED10CCD7B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Testing/Pods-Testing-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C20190BBA989C2CFAD9CC564 /* [CP] Embed Pods Frameworks */ = {
@@ -525,10 +493,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CX893E63R7;
+				DEVELOPMENT_TEAM = 85NJ3DGBWJ;
 				INFOPLIST_FILE = Testing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Testing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww.raywenderlich.Testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -541,10 +509,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CX893E63R7;
+				DEVELOPMENT_TEAM = 85NJ3DGBWJ;
 				INFOPLIST_FILE = Testing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.Testing;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ww.raywenderlich.Testing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
