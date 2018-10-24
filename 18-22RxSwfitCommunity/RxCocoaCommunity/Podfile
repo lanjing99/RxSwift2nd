@@ -1,0 +1,13 @@
+use_frameworks!
+
+target 'RxCocoaCommunity' do
+  pod 'RxCocoa'
+  pod 'SwiftyJSON'
+  pod 'RxDataSources'
+  pod 'Action'
+  #pod 'Nimble'
+  #pod 'RxNimble'
+  pod 'RxBlocking'
+  #pod 'OHHTTPStubs'
+  #pod 'OHHTTPStubs/Swift'
+end
