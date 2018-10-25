@@ -10,30 +10,38 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import Action
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var button: UIButton!
     @IBOutlet weak var tableView: UITableView!
     let disposeBag = DisposeBag.init()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let citeis = Observable.of(["Lisbon", "Copenhagen", "London", "Madrid",
-                                    "Vienna"])
+//        let citeis = Observable.of(["Lisbon", "Copenhagen", "London", "Madrid",
+//                                    "Vienna"])
 //        citeis.bind(to: tableView.rx.items){ (tableView: UITableView, index: Int, element: String) in
 //            let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
 //            cell.textLabel?.text = element
 //            return cell
 //
 //        }.disposed(by: disposeBag)
+//
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//
+//        citeis.bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
+//            cell.textLabel?.text = "\(element) @ row \(row)"
+//            }
+//            .disposed(by: disposeBag)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        citeis.bind(to: tableView.rx.items(cellIdentifier: "Cell", cellType: UITableViewCell.self)) { (row, element, cell) in
-            cell.textLabel?.text = "\(element) @ row \(row)"
-            }
-            .disposed(by: disposeBag)
+        button.rx.action = Action<Void, Void>{
+            print("hello world")
+            return Observable.empty()
+        }
+            
     }
 
 
