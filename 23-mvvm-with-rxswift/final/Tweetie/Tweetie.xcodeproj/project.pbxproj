@@ -429,7 +429,6 @@
 				9C1EEACE1DF424B5009705BD /* Frameworks */,
 				9C1EEACF1DF424B5009705BD /* Resources */,
 				5C14B5D893D1DE0730D9CA0E /* [CP] Embed Pods Frameworks */,
-				BBFA1CA002AB384AEF23CD5B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -450,7 +449,6 @@
 				9C2F4C671DE9C8A300307687 /* Frameworks */,
 				9C2F4C681DE9C8A300307687 /* Resources */,
 				9B7D94EC15F060BD76DF8350 /* [CP] Embed Pods Frameworks */,
-				8BA85FCF6BCD2D59B2EA22B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -470,7 +468,6 @@
 				9C2F4C821DE9C8CE00307687 /* Frameworks */,
 				9C2F4C831DE9C8CE00307687 /* Resources */,
 				E07FCDC8B51D2AAA3BEAEF50 /* [CP] Embed Pods Frameworks */,
-				70DD76F58433079C75010C24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -655,36 +652,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetieAbstract-TweetieTests/Pods-TweetieAbstract-TweetieTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		70DD76F58433079C75010C24 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetieAbstract-MacTweetie/Pods-TweetieAbstract-MacTweetie-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8BA85FCF6BCD2D59B2EA22B9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetieAbstract-Tweetie/Pods-TweetieAbstract-Tweetie-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9B7D94EC15F060BD76DF8350 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -725,21 +692,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetieAbstract-Tweetie/Pods-TweetieAbstract-Tweetie-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BBFA1CA002AB384AEF23CD5B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TweetieAbstract-TweetieTests/Pods-TweetieAbstract-TweetieTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E07FCDC8B51D2AAA3BEAEF50 /* [CP] Embed Pods Frameworks */ = {
